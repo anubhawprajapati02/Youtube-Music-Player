@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    padding-top: 50px; /* Space for fixed nav */
+    padding-bottom: 90px; /* Space for fixed bottom */
+    margin: 0;
+}
+
+/* Nav Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    border-bottom: 2px solid rgb(15, 15, 15);
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 50px;
+    background-color: black;
+    border: 2px solid rgb(15, 15, 15);
+    color: white;
+}
+
+nav ul li {
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.brand img {
+    width: 110px;
+}
+
+.container {
+    /* min-height: calc(100vh - 140px); Adjusted to fit within viewport height minus nav and bottom heights */
+    border-radius: 5px;
+    margin: 0 20px;
+    background-image: url("mike-hindle-OKN2s3ulxkE-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: auto; /* Makes the container scrollable */
+}
+
+.songList h1 {
+    color: rgb(18, 50, 70);
+    margin: 0 10px;
+}
+
+.songItem {
+    display: flex;
+    height: 200px;
+    color: white;
+}
+
+.one_song_block {
+    max-width: 200px;
+    /* border: 2px solid white; */
+    position: relative;
+    margin-right: 20px;
+}
+
+.icon_play_pause {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.songName {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+}
+
+.scroll {
+    display: flex;
+    /* border: 2px solid white; */
+    margin: 20px 100px;
+    overflow-x: auto;
+}
+
+.quick_scroll {
+    display: flex;
+    height: 210px;
+    /* border: 2px solid white; */
+    margin: 20px 100px;
+    overflow-x: auto;
+}
+
+
+.random_songs h1 {
+    color: white;
+}
+
+.sec_song_block {
+    width: 50%;
+    height: 40px;
+}
+
+.songItem1 {
+    display: flex;
+    position: relative;
+    background-color: rgb(31, 24, 24);
+    border-radius: 12px;
+    margin: 10px 20px;
+    align-items: center;
+    color: white;
+}
+
+.icon_play_pause1 {
+    position: absolute;
+    cursor: pointer;
+    top: 21px;
+    left: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.sec_song_block img {
+    height: 40px;
+    border-radius: 20px;
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+/* Bottom Styles */
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: rgb(17, 17, 17);
+    border-top: 2px solid rgb(15, 15, 15);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+#ProgressBar {
+    width: 80vw;
+    cursor: pointer;
+}
+
+.icons i {
+    margin-top: 15px;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.songInfo {
+    position: absolute;
+    left: 10vw;
+    top: 6vh;
+    display: flex;
+    align-items: center;
+}
+
+.songInfo img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    margin-right: 10px;
+}
+
+#footer {
+    height: 50px;
+    border: 2px solid rgb(120, 35, 54);
+    background-color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p {
+    color: white;
+}
+
+.footer #design{
+    text-transform: uppercase;
+    opacity: 0.7;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-left: 10px;
+}
