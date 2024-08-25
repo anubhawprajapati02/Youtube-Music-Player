@@ -5,9 +5,38 @@
 
 body {
     background-color: black;
-    padding-top: 50px; /* Space for fixed nav */
-    padding-bottom: 90px; /* Space for fixed bottom */
+    padding-top: 50px;
+    /* Space for fixed nav */
+    padding-bottom: 90px;
+    /* Space for fixed bottom */
     margin: 0;
+}
+
+
+@media screen and (max-width: 680px) {
+    .scroll {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 !important;
+        margin-bottom: 20px !important;
+        /* border: 2px solid palevioletred; */
+    }
+
+    .one_song_block {
+        margin: 0 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .quick_scroll{
+        flex-direction: column;
+        height: auto !important;
+    }
+
+    .sec_song_block{
+        height: auto !important;
+        width: auto !important;
+    }
 }
 
 /* Nav Styles */
@@ -19,7 +48,8 @@ nav {
     height: 50px;
     background-color: black;
     border-bottom: 2px solid rgb(15, 15, 15);
-    z-index: 1000; /* Ensure it stays on top of other content */
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
 }
 
 nav ul {
@@ -49,7 +79,8 @@ nav ul li {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    overflow-y: auto; /* Makes the container scrollable */
+    overflow-y: auto;
+    /* Makes the container scrollable */
 }
 
 .songList h1 {
@@ -156,7 +187,8 @@ nav ul li {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000; /* Ensure it stays on top of other content */
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
 }
 
 #ProgressBar {
@@ -198,7 +230,7 @@ nav ul li {
     color: white;
 }
 
-.footer #design{
+.footer #design {
     text-transform: uppercase;
     opacity: 0.7;
     cursor: pointer;
