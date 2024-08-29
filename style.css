@@ -128,7 +128,7 @@ nav ul li {
 .quick_scroll {
     display: flex;
     height: 210px;
-    /* border: 2px solid white; */
+    border: 2px solid white;
     margin: 20px 100px;
     overflow-x: auto;
 }
