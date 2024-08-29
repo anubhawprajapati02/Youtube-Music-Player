@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -24,18 +25,19 @@ body {
     }
 
     .one_song_block {
-        margin: 0 !important;
-        margin-bottom: 20px !important;
+        margin: 0;
+        margin-bottom: 10px;
     }
 
-    .quick_scroll{
+    .random_songs .quick_scroll{
         flex-direction: column;
-        height: auto !important;
+        margin: 10px 10%;
+        height: auto;
     }
 
-    .sec_song_block{
-        height: auto !important;
-        width: auto !important;
+    .random_songs .quick_scroll .sec_song_block{
+        height: auto;
+        width: auto;
     }
 }
 
@@ -187,7 +189,7 @@ nav ul li {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 1;
     /* Ensure it stays on top of other content */
 }
 
@@ -205,7 +207,7 @@ nav ul li {
 .songInfo {
     position: absolute;
     left: 10vw;
-    top: 6vh;
+    top: 35px;
     display: flex;
     align-items: center;
 }

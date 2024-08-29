@@ -5,11 +5,11 @@ let masterplay = document.getElementById("masterplay"); // Main play/pause butto
 let progressbar = document.getElementById("ProgressBar"); // Progress bar element
 let gif = document.getElementById('gif'); // GIF element for showing animation during play
 
- // All song items in the main song list
+// All song items in the main song list
 let songItems = Array.from(document.getElementsByClassName('one_song_block'));
- // All song items in the quick picks list
+// All song items in the quick picks list
 let songItems1 = Array.from(document.getElementsByClassName('songItem1'));
- // Display current song name
+// Display current song name
 let mastersongname = document.getElementById('masterSongName');
 
 // List of songs with their respective file paths and cover images
@@ -39,12 +39,18 @@ songItems1.forEach((element, i) => {
 
 // Play/pause functionality for the master play button
 masterplay.addEventListener('click', () => {
-    if (audioElement.paused || audioElement.currentTime == 0) { // Check if audio is paused or at the start
-        audioElement.play();
-        masterplay.classList.remove('fa-circle-play'); // Change icon to pause
-        masterplay.classList.add('fa-circle-pause');
-        makeAllPlay();
-        gif.style.opacity = 1; // Show GIF animation
+    if (audioElement.paused) { // Check if audio is paused or at the start
+        if (songIndex == 0 && audioElement.currentTime == audioElement.duration) {
+            songIndex=-1;
+            playNextSong();
+        }
+        else {
+            audioElement.play();
+            masterplay.classList.remove('fa-circle-play'); // Change icon to pause
+            masterplay.classList.add('fa-circle-pause');
+            makeAllPlay();
+            gif.style.opacity = 1; // Show GIF animation
+        }
     }
     else {
         audioElement.pause();
@@ -61,7 +67,7 @@ masterplay.addEventListener('click', () => {
 
 // Update progress bar as the song plays
 audioElement.addEventListener('timeupdate', () => {
-     // Calculate progress percentage
+    // Calculate progress percentage
     let progress = parseFloat((audioElement.currentTime / audioElement.duration) * 100);
     progressbar.value = progress; // Update progress bar value
 })
@@ -70,7 +76,7 @@ audioElement.addEventListener('timeupdate', () => {
 
 // Change current playback time based on progress bar position
 progressbar.addEventListener('change', () => {
-     // Set current time to the new position
+    // Set current time to the new position
     audioElement.currentTime = progressbar.value * audioElement.duration / 100;
 })
 
@@ -85,7 +91,7 @@ const makeAllPlay = () => {
 // Event listeners for each song item to play/pause individual songs
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
     element.addEventListener(('click'), (e) => {
-         // Get the index of the clicked song
+        // Get the index of the clicked song
         let clickedIndex = parseInt(e.target.id);
 
         if (clickedIndex === songIndex && !audioElement.paused) {
@@ -96,13 +102,14 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
             masterplay.classList.remove('fa-circle-pause');
             masterplay.classList.add('fa-circle-play');
             gif.style.opacity = 0;
-        } 
-        else if(clickedIndex === songIndex && audioElement.paused && audioElement.currentTime!=0){
+        }
+        else if (clickedIndex === songIndex && audioElement.paused && audioElement.currentTime != 0) {
             audioElement.play();
             e.target.classList.remove('fa-circle-play');
             e.target.classList.add('fa-circle-pause');
             masterplay.classList.remove('fa-circle-play');
             masterplay.classList.add('fa-circle-pause');
+            gif.style.opacity = 1;
         }
         else {
             // If a different song is clicked, play the new song
@@ -123,6 +130,33 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
 })
 
 
+// Function to go to the next song
+const playNextSong = () => {
+    makeAllPlay();
+    if (songIndex === 8) {
+        songIndex = 0;
+        gif.style.opacity = 0;
+        masterplay.classList.remove('fa-circle-pause');
+        masterplay.classList.add('fa-circle-play');
+    }
+    else {
+        songIndex += 1;
+        audioElement.src = songs[songIndex].filePath;
+        mastersongname.innerText = songs[songIndex].songName;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterplay.classList.remove('fa-circle-play');
+        masterplay.classList.add('fa-circle-pause');
+        gif.style.opacity = 1;
+
+        // Update icon for the currently playing song
+        document.getElementById(songIndex.toString()).classList.remove('fa-circle-play');
+        document.getElementById(songIndex.toString()).classList.add('fa-circle-pause');
+    }
+}
+
+// Event listener to automatically play the next song when the current song ends
+audioElement.addEventListener('ended', playNextSong);
 
 
 // Event listener for the 'previous' button to go to the previous song
@@ -146,21 +180,4 @@ document.getElementById('previous').addEventListener('click', () => {
 })
 
 // Event listener for the 'next' button to go to the next song
-document.getElementById('next').addEventListener('click', () => {
-    makeAllPlay();
-    if (songIndex == 8)
-        songIndex = 0; // Loop to the first song if at the last
-    else
-        songIndex += 1; // Go to the next song
-    audioElement.src = songs[songIndex].filePath;
-    mastersongname.innerText = songs[songIndex].songName;
-    audioElement.currentTime = 0;
-    audioElement.play();
-    masterplay.classList.remove('fa-circle-play');
-    masterplay.classList.add('fa-circle-pause');
-
-    // Update icon for the currently playing song
-    let newIcon = document.getElementById(songIndex.toString());
-    newIcon.classList.remove('fa-circle-play');
-    newIcon.classList.add('fa-circle-pause');
-})
+document.getElementById('next').addEventListener('click', playNextSong);
