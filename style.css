@@ -14,7 +14,7 @@ body {
 }
 
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 690px) {
     .scroll {
         flex-direction: column;
         justify-content: center;
@@ -38,6 +38,14 @@ body {
     .random_songs .quick_scroll .sec_song_block{
         height: auto;
         width: auto;
+    }
+
+    .bottom .songInfo{
+        left: auto;
+        top: 25px;
+    }
+    .bottom .songInfo img{
+        height: 10px;
     }
 }
 
@@ -128,7 +136,7 @@ nav ul li {
 .quick_scroll {
     display: flex;
     height: 210px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     margin: 20px 100px;
     overflow-x: auto;
 }

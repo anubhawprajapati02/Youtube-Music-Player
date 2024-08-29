@@ -41,7 +41,7 @@ songItems1.forEach((element, i) => {
 masterplay.addEventListener('click', () => {
     if (audioElement.paused) { // Check if audio is paused or at the start
         if (songIndex == 0 && audioElement.currentTime == audioElement.duration) {
-            songIndex=-1;
+            songIndex = -1;
             playNextSong();
         }
         else {
@@ -172,6 +172,7 @@ document.getElementById('previous').addEventListener('click', () => {
     audioElement.play();
     masterplay.classList.remove('fa-circle-play');
     masterplay.classList.add('fa-circle-pause');
+    gif.style.opacity = 1;
 
     // Update icon for the currently playing song
     let newIcon = document.getElementById(songIndex.toString());
