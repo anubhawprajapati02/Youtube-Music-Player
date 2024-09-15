@@ -14,15 +14,19 @@ let mastersongname = document.getElementById('masterSongName');
 
 // List of songs with their respective file paths and cover images
 let songs = [
-    { songName: "Aaja We Mahiya", filePath: "Songs/Aaja We Mahiya (Imran Khan).mp3", coverPath: "Cover/Imran_khan.jpg" },
-    { songName: "Amplifier", filePath: "Songs/Amplifier - Imran Khan.mp3", coverPath: "Cover/Imran_khan.jpg" },
-    { songName: "Pata Chalgea", filePath: "Songs/Pata Chalgea (Imran Khan).mp3", coverPath: "Cover/Imran_khan.jpg" },
+    { songName: "Aaja We Mahiya", filePath: "Songs/Aaja We Mahiya (Imran Khan).mp3", coverPath: "Cover/aaja we mahiya.jpeg" },
+    { songName: "Amplifier", filePath: "Songs/Amplifier - Imran Khan.mp3", coverPath: "Cover/amplifier.jpg" },
+    { songName: "Pata Chalgea", filePath: "Songs/Pata Chalgea (Imran Khan).mp3", coverPath: "Cover/Pata-Chalgea.jpg" },
+    { songName: "Harleys In Hawaii", filePath: "Songs/Harleys In Hawaii.mp3", coverPath: "Cover/harleyInHawaii.jpeg" },
+    { songName: "Broken Angel", filePath: "Songs/Broken Angel.mp3", coverPath: "Cover/brokenangel.jpg" },
     { songName: "Tum Se", filePath: "Songs/Tum Se.mp3", coverPath: "Cover/tum_se.jpeg" },
     { songName: "Aaj Ki Raat", filePath: "Songs/Aaj Ki Raat - Stree 2.mp3", coverPath: "Cover/aaj_ki_raat.jpeg" },
     { songName: "Baarish", filePath: "Songs/Baarish (Yaariyan) [PagalWorld.com] - 320Kbps.mp3", coverPath: "Cover/baarish.jpeg" },
     { songName: "Dil Ibaadat", filePath: "Songs/Dil Ibaadat - Tum Mile 320Kbps.mp3", coverPath: "Cover/dil_ibadaat.jpg" },
     { songName: "Barsaat Ki Dhun", filePath: "Songs/Barsaat Ki Dhun - Jubin Nautiyal.mp3", coverPath: "Cover/Barsaat-Ki-Dhun.jpg" },
-    { songName: "Hasi", filePath: "Songs/Hasi (Shreya Ghoshal) Hamari Adhuri Kahani - 320Kbps.mp3", coverPath: "Cover/hasi.jpg" }
+    { songName: "Hasi", filePath: "Songs/Hasi (Shreya Ghoshal) Hamari Adhuri Kahani - 320Kbps.mp3", coverPath: "Cover/hasi.jpg" },
+    { songName: "Saari Saari Raat", filePath: "Songs/Saari Saari Raat Himesh.mp3", coverPath: "Cover/Khiladi-786.jpg" },
+    { songName: "Har Kisi Ko", filePath: "Songs/Har Kisi Ko.mp3", coverPath: "Cover/harkisiko.jpg" }
 ]
 
 // Update song items with cover images and song names
@@ -33,8 +37,8 @@ songItems.forEach((element, i) => {
 
 // Update quick pick items with cover images and song names
 songItems1.forEach((element, i) => {
-    element.getElementsByTagName('img')[0].src = songs[i + 3].coverPath;
-    element.getElementsByClassName('songName')[0].innerHTML = songs[i + 3].songName;
+    element.getElementsByTagName('img')[0].src = songs[i + 5].coverPath;
+    element.getElementsByClassName('songName')[0].innerHTML = songs[i + 5].songName;
 })
 
 // Play/pause functionality for the master play button
@@ -133,7 +137,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
 // Function to go to the next song
 const playNextSong = () => {
     makeAllPlay();
-    if (songIndex === 8) {
+    if (songIndex === 12) {
         songIndex = 0;
         gif.style.opacity = 0;
         masterplay.classList.remove('fa-circle-pause');
@@ -163,7 +167,7 @@ audioElement.addEventListener('ended', playNextSong);
 document.getElementById('previous').addEventListener('click', () => {
     makeAllPlay(); // Reset all play buttons
     if (songIndex == 0)
-        songIndex = 8; // Loop to the last song if at the first
+        songIndex = 12; // Loop to the last song if at the first
     else
         songIndex -= 1; // Go to the previous song
     audioElement.src = songs[songIndex].filePath;
